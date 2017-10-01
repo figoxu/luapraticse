@@ -11,6 +11,7 @@ function player.Attack(target)
     print("attack",target.name)
 end
 
+-- :相当于隐形的传了第一个参数  self
 function player:BloodStrike(target)
 --    self is this ptr
     target.life=target.life-self.weapon.attack
