@@ -1,7 +1,9 @@
 D={}
 
 local function writeMsgToFile(filePath,msg)
-
+    local output=io.open(filePath,"a")
+    output:write(msg.."\n")
+    output:close()
 end
 
 function D.debug(...)
@@ -12,6 +14,7 @@ function D.debug(...)
 --        .. for string append
 --        tostring for parse any data type to string
         msg=msg..tostring(v).." "
+        writeMsgToFile("log.txt",msg)
     end
     if release then
         return
@@ -21,3 +24,5 @@ function D.debug(...)
 end
 
 D.debug("hello world")
+release=true
+D.debug("hey man")
